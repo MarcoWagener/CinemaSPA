@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CA89C2A8-6826-410A-8A99-183E62CFF831}</ProjectGuid>
+    <ProjectGuid>{7FC65030-B2BD-4571-964E-971942F49DCD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SolistenManager.Data</RootNamespace>
-    <AssemblyName>SolistenManager.Data</AssemblyName>
+    <RootNamespace>SolistenManager.Services</RootNamespace>
+    <AssemblyName>SolistenManager.Services</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -38,10 +38,6 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="MockData, Version=0.0.0.6, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MockData.0.0.6\lib\net40\MockData.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -52,49 +48,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccessoryConfiguration.cs" />
-    <Compile Include="ClientConfiguration.cs" />
-    <Compile Include="EntityBaseConfiguration.cs" />
-    <Compile Include="Extensions\UserExtensions.cs" />
-    <Compile Include="Infrastructure\DbFactory.cs" />
-    <Compile Include="Infrastructure\Disposable.cs" />
-    <Compile Include="Infrastructure\IDbFactory.cs" />
-    <Compile Include="Infrastructure\IUnitOfWork.cs" />
-    <Compile Include="Infrastructure\UnitOfWork.cs" />
-    <Compile Include="Migrations\201511190942451_initial_migration.cs" />
-    <Compile Include="Migrations\201511190942451_initial_migration.Designer.cs">
-      <DependentUpon>201511190942451_initial_migration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Abstract\IEncryptionService.cs" />
+    <Compile Include="Abstract\IMembershipService.cs" />
+    <Compile Include="EncryptionService.cs" />
+    <Compile Include="MembershipContext.cs" />
+    <Compile Include="MembershipService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RentalConfiguration.cs" />
-    <Compile Include="Repositories\EntityBaseRepository.cs" />
-    <Compile Include="Repositories\IEntityBaseRepository.cs" />
-    <Compile Include="RoleConfiguration.cs" />
-    <Compile Include="SolistenConfiguration.cs" />
-    <Compile Include="SolistenManagerContext.cs" />
-    <Compile Include="StockConfiguration.cs" />
-    <Compile Include="UserConfiguration.cs" />
-    <Compile Include="UserRoleConfiguration.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\SolistenManager.Data\SolistenManager.Data.csproj">
+      <Project>{ca89c2a8-6826-410a-8a99-183e62cff831}</Project>
+      <Name>SolistenManager.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SolistenManager.Entities\SolistenManager.Entities.csproj">
       <Project>{96f2362e-c603-428a-8430-e50798d53ea3}</Project>
       <Name>SolistenManager.Entities</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201511190942451_initial_migration.resx">
-      <DependentUpon>201511190942451_initial_migration.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="it\MockData.resources.dll" />
-    <Content Include="uk\MockData.resources.dll" />
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
