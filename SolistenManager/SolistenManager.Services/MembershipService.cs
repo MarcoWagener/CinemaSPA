@@ -117,7 +117,7 @@ namespace SolistenManager.Services
             return _result.Distinct().ToList();
         }
 
-        public MembershipContext ValidatUser(string username, string password)
+        public MembershipContext ValidateUser(string username, string password)
         {
             var memberShipCtx = new MembershipContext();
 

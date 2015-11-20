@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolistenManager.Data", "Sol
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolistenManager.Services", "SolistenManager.Services\SolistenManager.Services.csproj", "{7FC65030-B2BD-4571-964E-971942F49DCD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolistenManager.Web", "SolistenManager.Web\SolistenManager.Web.csproj", "{B622D4EB-C656-4627-800A-1EB786294064}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{7FC65030-B2BD-4571-964E-971942F49DCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FC65030-B2BD-4571-964E-971942F49DCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7FC65030-B2BD-4571-964E-971942F49DCD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B622D4EB-C656-4627-800A-1EB786294064}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B622D4EB-C656-4627-800A-1EB786294064}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B622D4EB-C656-4627-800A-1EB786294064}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B622D4EB-C656-4627-800A-1EB786294064}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
