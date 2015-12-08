@@ -153,8 +153,13 @@
     <Content Include="Content\images\raty\star-off.png" />
     <Content Include="Content\images\raty\star-on-big.png" />
     <Content Include="Content\images\raty\star-on.png" />
+    <Content Include="Content\images\solistens\solisten1.png" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\spa\app.js" />
+    <Content Include="Scripts\spa\directives\availableSolisten.directive.js" />
+    <Content Include="Scripts\spa\directives\availableSolisten.html" />
+    <Content Include="Scripts\spa\home\index.html" />
+    <Content Include="Scripts\spa\home\indexCtrl.js" />
     <Content Include="Scripts\spa\home\rootCtrl.js" />
     <Content Include="Scripts\spa\layout\sideBar.directive.js" />
     <Content Include="Scripts\spa\layout\sideBar.html" />
@@ -162,7 +167,9 @@
     <Content Include="Scripts\spa\layout\topBar.html" />
     <Content Include="Scripts\spa\modules\common.core.js" />
     <Content Include="Scripts\spa\modules\common.ui.js" />
-    <Content Include="Scripts\vendors\angucomplete-alt.min.js" />
+    <Content Include="Scripts\spa\services\apiService.js" />
+    <Content Include="Scripts\spa\services\notificationService.js" />
+    <Content Include="Scripts\vendors\angucomplete-alt.js" />
     <Content Include="Scripts\vendors\angular-base64.js" />
     <Content Include="Scripts\vendors\angular-cookies.js" />
     <Content Include="Scripts\vendors\angular-file-upload.js" />
@@ -191,11 +198,18 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SolistenController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\Core\ApiControllerBase.cs" />
     <Compile Include="Infrastructure\Extensions\RequestMessageExtensions.cs" />
+    <Compile Include="Infrastructure\Mappings\AutoMapperConfiguration.cs" />
+    <Compile Include="Infrastructure\Mappings\DomainToViewModelMappingProfile.cs" />
     <Compile Include="Infrastructure\MessageHandlers\SolistenAuthHandler.cs" />
+    <Compile Include="Infrastructure\Validators\SolistenModelValidator.cs" />
+    <Compile Include="Models\AccessoryModel.cs" />
+    <Compile Include="Models\SolistenModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -236,8 +250,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\images\solistens\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

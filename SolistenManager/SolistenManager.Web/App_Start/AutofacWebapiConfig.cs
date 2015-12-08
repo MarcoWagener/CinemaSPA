@@ -2,6 +2,7 @@
 using Autofac.Integration.WebApi;
 using SolistenManager.Data;
 using SolistenManager.Data.Infrastructure;
+using SolistenManager.Data.Repositories;
 using SolistenManager.Services;
 using SolistenManager.Services.Abstract;
 using System;
@@ -41,6 +42,10 @@ namespace SolistenManager.Web.App_Start
 
             builder.RegisterType<UnitOfWork>()
                     .As<IUnitOfWork>()
+                    .InstancePerRequest();
+
+            builder.RegisterGeneric(typeof(EntityBaseRepository<>))
+                    .As(typeof(IEntityBaseRepository<>))
                     .InstancePerRequest();
 
             builder.RegisterType<EncryptionService>()

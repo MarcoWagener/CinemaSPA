@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SolistenManager.Web.Infrastructure.Mappings;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,7 +11,11 @@ namespace SolistenManager.Web.App_Start
     {
         public static void Run()
         {
+            //Configure AutoFac.
             AutofacWebapiConfig.Initialize(GlobalConfiguration.Configuration);
+
+            //Configure AutoMapper.
+            AutoMapperConfiguration.Configure();
         }
     }
 }
