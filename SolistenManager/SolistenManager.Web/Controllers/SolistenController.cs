@@ -13,7 +13,7 @@ using System.Web.Http;
 
 namespace SolistenManager.Web.Controllers
 {
-    [Authorize(Roles="Admin")]
+    //[Authorize(Roles="Admin")]
     [RoutePrefix("api/solistens")]
     public class SolistenController : ApiControllerBase
     {

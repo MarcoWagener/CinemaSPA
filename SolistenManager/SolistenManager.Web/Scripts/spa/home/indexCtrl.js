@@ -8,7 +8,7 @@
     function indexCtrl($scope, apiService, notificationService) {
         $scope.pageClass = 'page-home';
         $scope.loadingSolistens = true;
-        $scope.isReadOnly = true;
+        $scope.isReadOnly = true; //Used for the rating directive.
 
         $scope.solistenList = [];
         $scope.loadData = loadData;

@@ -156,11 +156,15 @@
     <Content Include="Content\images\solistens\solisten1.png" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\spa\app.js" />
+    <Content Include="Scripts\spa\clients\clientsCtrl.js" />
+    <Content Include="Scripts\spa\clients\clients.html" />
     <Content Include="Scripts\spa\directives\availableSolisten.directive.js" />
     <Content Include="Scripts\spa\directives\availableSolisten.html" />
     <Content Include="Scripts\spa\home\index.html" />
     <Content Include="Scripts\spa\home\indexCtrl.js" />
     <Content Include="Scripts\spa\home\rootCtrl.js" />
+    <Content Include="Scripts\spa\layout\customPager.directive.js" />
+    <Content Include="Scripts\spa\layout\pager.html" />
     <Content Include="Scripts\spa\layout\sideBar.directive.js" />
     <Content Include="Scripts\spa\layout\sideBar.html" />
     <Content Include="Scripts\spa\layout\topBar.directive.js" />
@@ -197,18 +201,22 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SolistenController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\Core\ApiControllerBase.cs" />
+    <Compile Include="Infrastructure\Core\PagnationSet.cs" />
     <Compile Include="Infrastructure\Extensions\RequestMessageExtensions.cs" />
     <Compile Include="Infrastructure\Mappings\AutoMapperConfiguration.cs" />
     <Compile Include="Infrastructure\Mappings\DomainToViewModelMappingProfile.cs" />
     <Compile Include="Infrastructure\MessageHandlers\SolistenAuthHandler.cs" />
+    <Compile Include="Infrastructure\Validators\ClientModelValidator.cs" />
     <Compile Include="Infrastructure\Validators\SolistenModelValidator.cs" />
     <Compile Include="Models\AccessoryModel.cs" />
+    <Compile Include="Models\ClientModel.cs" />
     <Compile Include="Models\SolistenModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

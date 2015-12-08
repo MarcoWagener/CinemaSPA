@@ -1,0 +1,49 @@
+﻿<div class="row">
+    <div class="panel panel-primary">
+        <div class="panel-heading clearfix">
+            <h4 class="panel-title pull-left" style="padding-top:7.5px;">Solisten Clients</h4>
+            <div class="input-group">
+                <input id="inputSearchCustomers" type="search" ng-model="filterClients" class="form-control shortInputSearch" placeholder="Filter, search customers..." />
+                <div class="input-group-btn">
+                    <button class="btn btn-primary" ng-click="search();"><i class="glyphicon glyphicon-search"></i></button>
+                    <button class="btn btn-primary" ng-click="clearSearch();"><i class="glyphicon glyphicon-remove-sign"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-6" ng-repeat="client in Clients | filter:filterClients">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>{{client.FirstName}} {{client.LastName}}</strong><br />
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-condensed shortMargin">
+                                    <tr>
+                                        <td class="shortPadding">Email:</td>
+                                        <td class="shortPadding"><i>{{client.Email}}</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="shortPadding">Mobile:</td>
+                                        <td class="shortPadding"><i>{{client.Mobile}}</i></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="panel-footer clearfix">
+                            <div class="pull-right">
+                                <button class="btn btn-primary btn-xs" ng-click="openEditDialog(client)">Edit <i class="fa fa-pencil pull-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <div class="text-center">
+                <cutom-pager page="{{page}}" pages-count="{{pagesCount}}" total-count="{{totalCount}}" search-func="search(page)"></cutom-pager>
+            </div>
+        </div>
+    </div>
+</div>

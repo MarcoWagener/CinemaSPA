@@ -24,6 +24,8 @@ namespace SolistenManager.Web.Infrastructure.Mappings
                 .ForMember(vm => vm.SerialNumber, map => map.MapFrom(m => m.SerialNumber))
                 .ForMember(vm => vm.IsAvailable, map => map.MapFrom(m => m.Stocks.Any(s => s.IsAvailable)))
                 .ForMember(vm => vm.Image, map => map.MapFrom(m => string.IsNullOrEmpty(m.Image) == true ? "unknown.jpg" : m.Image));
+
+            Mapper.CreateMap<Client, ClientModel>();
         }
     }
 }

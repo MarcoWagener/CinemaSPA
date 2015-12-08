@@ -19,13 +19,13 @@
                 templateUrl: "scripts/spa/account/register.html",
                 controller: "registerCtrl"
             })
-            .when("/client", {
-                templateUrl: "scripts/spa/client/client.html",
-                controller: "clientCtrl"
+            .when("/clients", {
+                templateUrl: "scripts/spa/clients/clients.html",
+                controller: "clientsCtrl"
             })
-            .when("/client/register", {
-                templateUrl: "scripts/spa/client/register.html",
-                controller: "clientRegCtrl"
+            .when("/clients/register", {
+                templateUrl: "scripts/spa/clients/register.html",
+                controller: "clientsRegCtrl"
             })
             .when("/solisten", {
                 templateUrl: "scripts/spa/solisten/solisten.html",
