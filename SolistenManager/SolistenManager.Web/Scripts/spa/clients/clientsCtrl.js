@@ -36,7 +36,16 @@
         }
 
         function openEditDialog(client) {
-            console.log(client);
+            $scope.EditedClient = client;
+            $modal.open({
+                templateUrl: 'scripts/spa/clients/editClientModal.html',
+                controller: 'clientEditCtrl',
+                scope: $scope
+            })
+            .result.then(function ($scope) {
+                clearSearch();
+            },
+            function () {});
         }
 
         function clientsLoadCompleted(result) {

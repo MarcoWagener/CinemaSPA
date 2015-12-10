@@ -1,0 +1,43 @@
+﻿<div class="panel panel-primary">
+    <div class="panel-heading">
+        Edit {{EditedClient.FirstName}} {{EditedClient.LastName}}
+    </div>
+    <div class="panel-body">
+        <form role="form" novalidate angular-validator name="addClientForm" angular-validator-submit="Register()">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label class="control-label" for="firstName">First Name</label>
+                        <input type="text" class="form-control" ng-model="EditedClient.FirstName" name="firstName" id="firstName"
+                                placeholder="First Name" validate="blur" required required-message="'First Name is required.'" />
+                    </div>
+                    <div class="col-sm-6 selectContainer">
+                        <label class="control-label" for="lastName">Last Name</label>
+                        <input type="text" class="form-control" ng-model="EditedClient.LastName" name="firstName" id="lastName"
+                                placeholder="Last Name" validate="blur" required required-message="'Last Name is required.'" />
+                    </div>
+                </div>
+            </div>                
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <label class="control-label" for="email">Email</label>
+                        <input type="text" class="form-control" ng-model="EditedClient.Email" name="email" id="email"
+                                placeholder="Email" validate="blur" required required-message="'Email is required.'" />
+                    </div>
+                    <div class="col-xs-6 selectContainer">
+                        <label class="control-label" for="mobilePhone">Mobile</label>
+                        <input type="text" class="form-control" ng-model="EditedClient.Mobile" name="mobile" id="mobile"
+                                placeholder="Mobile" validate="blur" required required-message="'Mobile is required.'" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="panel-footer clearfix">
+        <div class="pull-right">
+            <button type="button" class="btn btn-danger" ng-click="cancelEdit()">Cancel</button>
+            <button type="button" class="btn btn-primary" ng-click="updateClient()">Update</button>
+        </div>
+    </div>
+</div>

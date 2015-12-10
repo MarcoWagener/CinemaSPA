@@ -32,6 +32,7 @@ namespace SolistenManager.Web.Controllers
         {
             int currentPage = page.Value;
             int currentPageSize = pageSize.Value;
+            int totalClients = new int();
 
             return CreateHttpResponse(request, () =>
             {
@@ -55,6 +56,8 @@ namespace SolistenManager.Web.Controllers
                                     .GetAll()
                                     .ToList();
 
+                totalClients = clientList.Count();
+
                 clientList = clientList.Skip(currentPage * currentPageSize)
                                 .Take(currentPageSize)
                                 .ToList();
@@ -64,12 +67,40 @@ namespace SolistenManager.Web.Controllers
                 PagnationSet<ClientModel> pagedSet = new PagnationSet<ClientModel>()
                 {
                     Page = currentPage,
-                    TotalCount = clientList.Count(),
-                    TotalPages = (int)Math.Ceiling((decimal)clientList.Count() / currentPageSize),
+                    TotalCount = totalClients,
+                    TotalPages = (int)Math.Ceiling((decimal)totalClients / currentPageSize),
                     Items = clientModel
                 };
 
                 response = request.CreateResponse<PagnationSet<ClientModel>>(HttpStatusCode.OK, pagedSet);
+
+                return response;
+            });
+        }
+
+        [HttpPost]
+        [Route("update")]
+        public HttpResponseMessage Update(HttpRequestMessage request, ClientModel client)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+
+                if(!ModelState.IsValid)
+                {
+                    response = request.CreateResponse(HttpStatusCode.BadRequest,
+                                                        ModelState.Keys.SelectMany(k => ModelState[k].Errors)
+                                                            .Select(m => m.ErrorMessage).ToArray());
+                }
+                else
+                {
+                    Client _client = _clientRepository.GetSingle(client.ID);
+                    _clientRepository.Edit(_client);
+
+                    _unitOfWork.Commit();
+
+                    response = request.CreateResponse(HttpStatusCode.OK);
+                }
 
                 return response;
             });

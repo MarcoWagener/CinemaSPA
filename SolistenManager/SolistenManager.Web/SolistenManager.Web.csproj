@@ -156,8 +156,10 @@
     <Content Include="Content\images\solistens\solisten1.png" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\spa\app.js" />
+    <Content Include="Scripts\spa\clients\clientEditCtrl.js" />
     <Content Include="Scripts\spa\clients\clientsCtrl.js" />
     <Content Include="Scripts\spa\clients\clients.html" />
+    <Content Include="Scripts\spa\clients\editClientModal.html" />
     <Content Include="Scripts\spa\directives\availableSolisten.directive.js" />
     <Content Include="Scripts\spa\directives\availableSolisten.html" />
     <Content Include="Scripts\spa\home\index.html" />

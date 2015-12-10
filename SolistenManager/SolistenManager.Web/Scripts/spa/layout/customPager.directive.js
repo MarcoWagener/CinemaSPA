@@ -15,7 +15,16 @@
             replace: true,
             restrict: 'E',
             templateUrl: '/scripts/spa/layout/pager.html',
-            controller: ['$scope', function ($scope) {
+            controller: ['$scope', function ($scope) {                
+
+                $scope.disableBack = function () {
+                    return $scope.page == 0 ? true : false;
+                };
+
+                $scope.disableForward = function () {
+                    return $scope.page == $scope.pagesCount - 1 ? true : false;
+                }
+
                 $scope.search = function (i) {
                     if ($scope.searchFunc) {
                         $scope.searchFunc({ page: i });
@@ -35,13 +44,12 @@
                     var ret = [];
                     for (var i = start; i != end; i++) {
                         ret.push(i);
-                    }
+                    }                    
 
                     return ret;
                 };
 
                 $scope.pagePlus = function (count) {
-                    console.log($scope.page);
                     return +$scope.page + count;
                 }
             }]
