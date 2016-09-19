@@ -80,7 +80,7 @@ namespace SolistenManager.Web.Controllers
 
         [HttpPost]
         [Route("update")]
-        public HttpResponseMessage Update(HttpRequestMessage request, ClientModel client)
+        public HttpResponseMessage Update(HttpRequestMessage request, ClientModel _clientModel)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -94,8 +94,12 @@ namespace SolistenManager.Web.Controllers
                 }
                 else
                 {
-                    Client _client = _clientRepository.GetSingle(client.ID);
-                    _clientRepository.Edit(_client);
+                    Client client = _clientRepository.GetSingle(_clientModel.ID);
+                    //client = Mapper.Map<ClientModel, Client>(_clientModel);
+                    client.FirstName = _clientModel.FirstName;
+                    client.LastName = _clientModel.LastName;
+                    client.Email = _clientModel.Email;
+                    client.Mobile = _clientModel.Mobile;
 
                     _unitOfWork.Commit();
 

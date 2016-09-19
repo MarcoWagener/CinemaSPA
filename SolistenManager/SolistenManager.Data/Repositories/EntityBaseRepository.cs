@@ -74,13 +74,13 @@ namespace SolistenManager.Data.Repositories
         public void Delete(T entity)
         {
             DbEntityEntry dbEntityEntry = DbContext.Entry<T>(entity);
-            dbEntityEntry.State = EntityState.Modified;            
+            dbEntityEntry.State = EntityState.Deleted;            
         }
 
         public void Edit(T entity)
         {
             DbEntityEntry dbEntityEntry = DbContext.Entry<T>(entity);
-            dbEntityEntry.State = EntityState.Deleted;
+            dbEntityEntry.State = EntityState.Modified;
         }
     }
 }

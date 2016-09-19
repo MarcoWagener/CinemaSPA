@@ -23,7 +23,7 @@ namespace SolistenManager.Data.Infrastructure
 
         public void Commit()
         {
-            dbContext.Commit();
+            DbContext.Commit();
         }
     }
 }
