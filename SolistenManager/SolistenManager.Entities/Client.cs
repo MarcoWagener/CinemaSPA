@@ -8,11 +8,17 @@ namespace SolistenManager.Entities
 {
     public class Client : IEntityBase
     {
+        public Client()
+        {
+            Dependants = new List<Dependant>();
+        }
+
         public int ID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
         public Guid UniqueKey { get; set; }
         public string Mobile { get; set; }
+        public virtual ICollection<Dependant> Dependants { get; set; }
     }
 }

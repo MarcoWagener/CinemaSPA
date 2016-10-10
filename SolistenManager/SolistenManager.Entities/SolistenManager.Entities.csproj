@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Accessory.cs" />
     <Compile Include="Client.cs" />
+    <Compile Include="Dependant.cs" />
     <Compile Include="Error.cs" />
     <Compile Include="IEntityBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

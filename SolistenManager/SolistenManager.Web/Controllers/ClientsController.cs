@@ -10,6 +10,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using SolistenManager.Web.Infrastructure.Extensions;
 
 namespace SolistenManager.Web.Controllers
 {
@@ -95,11 +96,7 @@ namespace SolistenManager.Web.Controllers
                 else
                 {
                     Client client = _clientRepository.GetSingle(_clientModel.ID);
-                    //client = Mapper.Map<ClientModel, Client>(_clientModel);
-                    client.FirstName = _clientModel.FirstName;
-                    client.LastName = _clientModel.LastName;
-                    client.Email = _clientModel.Email;
-                    client.Mobile = _clientModel.Mobile;
+                    client.AsClient(_clientModel);
 
                     _unitOfWork.Commit();
 

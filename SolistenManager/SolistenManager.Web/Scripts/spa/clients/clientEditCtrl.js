@@ -33,7 +33,7 @@
         }
 
         function cancelEdit() {
-            //$scope.isEdited = {};
+            $scope.isEnabled = {}; //don't know what this is for yet?
             $modalInstance.dismiss();
         }
 
