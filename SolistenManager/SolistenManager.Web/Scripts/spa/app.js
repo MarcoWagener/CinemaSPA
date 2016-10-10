@@ -25,7 +25,7 @@
             })
             .when("/clients/register", {
                 templateUrl: "scripts/spa/clients/register.html",
-                controller: "clientsRegCtrl"
+                controller: "clientRegCtrl"
             })
             .when("/solisten", {
                 templateUrl: "scripts/spa/solisten/solisten.html",

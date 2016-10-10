@@ -106,5 +106,35 @@ namespace SolistenManager.Web.Controllers
                 return response;
             });
         }
+
+        [HttpPost]
+        [Route("register")]
+        public HttpResponseMessage Register(HttpRequestMessage request, ClientModel _clientModel)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+
+                if (!ModelState.IsValid)
+                {
+                    response = request.CreateResponse(HttpStatusCode.BadRequest,
+                                                        ModelState.Keys.SelectMany(k => ModelState[k].Errors)
+                                                            .Select(m => m.ErrorMessage).ToArray());
+                }
+                else
+                {
+                    Client newClient = new Client();
+                    newClient.AsClient(_clientModel);
+
+                    _clientRepository.Add(newClient);
+                    _unitOfWork.Commit();
+
+                    _clientModel = Mapper.Map<Client, ClientModel>(newClient);
+                    response = request.CreateResponse<ClientModel>(HttpStatusCode.Created, _clientModel);
+                }
+
+                return response;
+            });
+        }
     }
 }

@@ -53,7 +53,7 @@ namespace SolistenManager.Web.App_Start
                 "~/Scripts/spa/home/rootCtrl.js",
                 "~/Scripts/spa/home/indexCtrl.js",
                 "~/Scripts/spa/clients/clientsCtrl.js",
-                "~/Scripts/spa/clients/clientsRegCtrl.js",
+                "~/Scripts/spa/clients/clientRegCtrl.js",
                 "~/Scripts/spa/clients/clientEditCtrl.js",
                 //"~/Scripts/spa/movies/moviesCtrl.js",
                 //"~/Scripts/spa/movies/movieAddCtrl.js",

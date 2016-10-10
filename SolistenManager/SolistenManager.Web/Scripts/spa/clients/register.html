@@ -1,0 +1,41 @@
+﻿<hr />
+<div class="alert alert-info alert-dismissable">
+	<a class="panel-close close" data-dismiss="alert">x</a>
+	<i class="fa fa -user-plus fa-3x"></i>
+	Regiter new client. Make sure you fill all the required fields.
+</div>
+<div class="row">
+	<form role="form" novalidate angular-validator name="addClientForm" angular-validator-submit="Register()">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label for="firstName">First Name</label>
+				<div class="form-group">
+					<input type="text" class="form-control" ng-model="newClient.FirstName" name="firstName" id="firstName" placeholder="First Name"
+						validate-on="blur" required required-message="'First Name is required'">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="lastName">Last Name</label>
+				<div class="form-group">
+					<input type="text" class="form-control" ng-model="newClient.LastName" name="lastName" id="lastName" placeholder="Last Name"
+						validate-on="blur" required required-message="'Last Name is required'">					
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="email">Email address</label>
+				<div class="form-group">
+					<input type="text" class="form-control" ng-model="newClient.Email" name="email" id="email" placeholder="Email address"
+						validate-on="blur" required required-message="'Email is required'">					
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="mobilePhone">Mobile Phone</label>
+				<div class="form-group">
+					<input type="text" class="form-control" ng-model="newClient.Mobile" name="mobilePhone" id="mobilePhone" placeholder="Mobile phone"
+						validate-on="blur" required required-message="'Mobile phone is required'">										
+				</div>
+			</div>
+			<input type="submit" name="submit" id="submit" Value="Submit" class="btn btn-info pull-right">
+		</div>
+	</form>
+</div>

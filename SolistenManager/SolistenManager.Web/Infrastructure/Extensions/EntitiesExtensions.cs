@@ -15,6 +15,8 @@ namespace SolistenManager.Web.Infrastructure.Extensions
             client.LastName = clientModel.LastName;
             client.Email = clientModel.Email;
             client.Mobile = clientModel.Mobile;
+            client.UniqueKey = (clientModel.UniqueKey == null || clientModel.UniqueKey == Guid.Empty)
+                ? Guid.NewGuid() : clientModel.UniqueKey;
         }
     }
 }
