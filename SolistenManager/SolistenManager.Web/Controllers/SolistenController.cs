@@ -94,5 +94,23 @@ namespace SolistenManager.Web.Controllers
                 return response;
             });
         }
+
+        [AllowAnonymous]
+        [Route("details/{id:int}")]
+        public HttpResponseMessage Get(HttpRequestMessage request, int id)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+
+                var solisten = _solistenRepository.GetSingle(id);
+
+                var solsitenModel = Mapper.Map<Solisten, SolistenModel>(solisten);
+
+                response = request.CreateResponse<SolistenModel>(HttpStatusCode.OK, solsitenModel);
+
+                return response;
+            });
+        }
     }
 }

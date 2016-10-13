@@ -210,6 +210,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RentalsController.cs" />
     <Compile Include="Controllers\SolistenController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -225,6 +226,7 @@
     <Compile Include="Infrastructure\Validators\SolistenModelValidator.cs" />
     <Compile Include="Models\AccessoryModel.cs" />
     <Compile Include="Models\ClientModel.cs" />
+    <Compile Include="Models\RentalHistoryModel.cs" />
     <Compile Include="Models\SolistenModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
