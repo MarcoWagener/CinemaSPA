@@ -1,0 +1,41 @@
+﻿<div class="row">
+    <div class="panel panel-primary">
+        <div class="panel-heading clearfix">
+            <h4 class="panel-title pull-left" style="padding-top:7.5px;">Solistens</h4>
+            <div class="input-group">
+                <input id="inputSearchSolistens" type="search" ng-model="filterSolistens" class="form-control shortInputSearch" placeholder="Filter, search solistens..." />
+                <div class="input-group-btn">
+                    <button class="btn btn-primary" ng-click="search();"><i class="glyphicon glyphicon-search"></i></button>
+                    <button class="btn btn-primary" ng-click="clearSearch();"><i class="glyphicon glyphicon-remove-sign"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-4" ng-repeat="solisten in Solistens | filter:filterSolistens">
+                    <div class="media">
+                        <a class="pull-left" ng-href="#/solistens/{{solisten.ID}}" title="View {{solisten.SerialNumber}} details">
+                            <img class="media-object" height="120" ng-src="../../Content/images/solistens/{{solisten.Image}}" alt="" />
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading">{{solisten.SerialNumber}}</h4>
+                            Owner: <strong>{{solisten.Owner}}</strong>
+                            <br />
+                            Purchase Date: <strong>{{solisten.PurchaseDate}}</strong>
+                            <br />
+                            Description: <strong>{{solisten.Description | limitTo: 70}}</strong>
+                        </div>
+                        <available-solisten is-available="{{solisten.IsAvailable}}"></available-solisten>
+                    </div>
+                    <br /><br />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <div class="text-center">
+                <custom-pager page="{{page}}" pages-count="{{pagesCount}}" total-count="{{totalCount}}" search-func="search(page)"></custom-pager>
+            </div>
+        </div>
+    </div>
+</div>

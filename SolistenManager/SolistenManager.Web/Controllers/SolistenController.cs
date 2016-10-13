@@ -44,5 +44,55 @@ namespace SolistenManager.Web.Controllers
                 return response;
             });
         }
+
+        [AllowAnonymous]
+        [Route("{page:int=0}/{pageSize=3}/{filter?}")]
+        public HttpResponseMessage Get(HttpRequestMessage request, int? page, int? pageSize, string filter = null)
+        {
+            int currentPage = page.Value;
+            int currentPageSize = pageSize.Value;
+            int totalSolistens = new int();
+
+            return CreateHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+                List<Solisten> solistenList = null;
+
+                if (!string.IsNullOrEmpty(filter))
+                {
+                    filter = filter.Trim().ToLower();
+
+                    solistenList = _solistenRepository
+                                        .GetAll()
+                                        .OrderBy(s => s.ID)
+                                        .Where(s => s.SerialNumber.ToLower().Contains(filter.ToLower().Trim()))
+                                        .ToList();
+                }
+                else
+                {
+                    solistenList = _solistenRepository.GetAll().ToList();
+                }
+
+                totalSolistens = solistenList.Count();
+
+                solistenList = solistenList.Skip(currentPage * currentPageSize)
+                                    .Take(currentPageSize)
+                                    .ToList();
+
+                IEnumerable<SolistenModel> solistenModel = Mapper.Map<IEnumerable<Solisten>, IEnumerable<SolistenModel>>(solistenList);
+
+                PagnationSet<SolistenModel> pagedSet = new PagnationSet<SolistenModel>()
+                {
+                    Page = currentPage,
+                    TotalCount = totalSolistens,
+                    TotalPages = (int)Math.Ceiling((decimal)totalSolistens / currentPageSize),
+                    Items = solistenModel
+                };
+
+                response = request.CreateResponse<PagnationSet<SolistenModel>>(HttpStatusCode.OK, pagedSet);
+
+                return response;
+            });
+        }
     }
 }

@@ -28,7 +28,7 @@
                 controller: "clientRegCtrl"
             })
             .when("/solisten", {
-                templateUrl: "scripts/spa/solisten/solisten.html",
+                templateUrl: "scripts/spa/solistens/solistens.html",
                 controller: "solistenCtrl"
             })
             .when("/solisten/add", {

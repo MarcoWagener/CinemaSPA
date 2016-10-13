@@ -178,6 +178,8 @@
     <Content Include="Scripts\spa\modules\common.ui.js" />
     <Content Include="Scripts\spa\services\apiService.js" />
     <Content Include="Scripts\spa\services\notificationService.js" />
+    <Content Include="Scripts\spa\solistens\solistenCtrl.js" />
+    <Content Include="Scripts\spa\solistens\solistens.html" />
     <Content Include="Scripts\vendors\angucomplete-alt.js" />
     <Content Include="Scripts\vendors\angular-base64.js" />
     <Content Include="Scripts\vendors\angular-cookies.js" />

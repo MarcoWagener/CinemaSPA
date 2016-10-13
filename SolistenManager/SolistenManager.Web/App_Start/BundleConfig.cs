@@ -55,7 +55,7 @@ namespace SolistenManager.Web.App_Start
                 "~/Scripts/spa/clients/clientsCtrl.js",
                 "~/Scripts/spa/clients/clientRegCtrl.js",
                 "~/Scripts/spa/clients/clientEditCtrl.js",
-                //"~/Scripts/spa/movies/moviesCtrl.js",
+                "~/Scripts/spa/solistens/solistenCtrl.js",
                 //"~/Scripts/spa/movies/movieAddCtrl.js",
                 //"~/Scripts/spa/movies/movieDetailsCtrl.js",
                 //"~/Scripts/spa/movies/movieEditCtrl.js",
