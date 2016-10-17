@@ -1,1 +1,38 @@
-﻿
+﻿<div class="panel panel-primary">
+    <div class="panel-heading">
+        Rent {{solisten.SerialNumber}}
+    </div>
+    <div class="panel-body">
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <div class="col-xs-8 selectContainer">
+                    <label class="control-label">Available Solistens</label>
+                    <select class="form-control black" ng-model="selectedStockItem" ng-options="option.ID as option.UniqueKey for option in stockItems" required></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-8">
+                    <label class="control-label">Select client</label>
+                    <angucomplete-alt id="members"
+                                      placeholder="Search clients"
+                                      onpause="200"
+                                      selected-object="selectClient"
+                                      remote-url="/api/clients?filter="
+                                      remote-url-data-field=""
+                                      title-field="FirstName,LastName"
+                                      description-field="Email"
+                                      input-class="form-control form-control-small"
+                                      match-class="red"
+                                      text-searching="Searching clients..."
+                                      text-no-results="No clients found matching your filter." />
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="panel-footer clearfix">
+        <div class="pull-right">
+            <button class="btn btn-danger" type="button" ng-click="cancelRental()">Cancel</button>
+            <button class="btn btn-primary" type="button" ng-click="rentSolisten()" ng-disabled="!isEnabled">Rent Solisten</button>
+        </div>
+    </div>
+</div>

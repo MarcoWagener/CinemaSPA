@@ -216,6 +216,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RentalsController.cs" />
     <Compile Include="Controllers\SolistenController.cs" />
+    <Compile Include="Controllers\StocksController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -228,10 +229,12 @@
     <Compile Include="Infrastructure\MessageHandlers\SolistenAuthHandler.cs" />
     <Compile Include="Infrastructure\Validators\ClientModelValidator.cs" />
     <Compile Include="Infrastructure\Validators\SolistenModelValidator.cs" />
+    <Compile Include="Infrastructure\Validators\StockModelValidator.cs" />
     <Compile Include="Models\AccessoryModel.cs" />
     <Compile Include="Models\ClientModel.cs" />
     <Compile Include="Models\RentalHistoryModel.cs" />
     <Compile Include="Models\SolistenModel.cs" />
+    <Compile Include="Models\StockModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

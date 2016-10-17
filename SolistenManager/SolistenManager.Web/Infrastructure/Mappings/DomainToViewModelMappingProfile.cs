@@ -27,6 +27,7 @@ namespace SolistenManager.Web.Infrastructure.Mappings
 
             Mapper.CreateMap<Client, ClientModel>();
             Mapper.CreateMap<ClientModel, Client>();
+            Mapper.CreateMap<Stock, StockModel>();
         }
     }
 }
