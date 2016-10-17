@@ -176,9 +176,13 @@
     <Content Include="Scripts\spa\layout\topBar.html" />
     <Content Include="Scripts\spa\modules\common.core.js" />
     <Content Include="Scripts\spa\modules\common.ui.js" />
+    <Content Include="Scripts\spa\rental\rentSolistenCtrl.js" />
+    <Content Include="Scripts\spa\rental\rentSolistenModal.html" />
     <Content Include="Scripts\spa\services\apiService.js" />
     <Content Include="Scripts\spa\services\notificationService.js" />
+    <Content Include="Scripts\spa\solistens\details.html" />
     <Content Include="Scripts\spa\solistens\solistenCtrl.js" />
+    <Content Include="Scripts\spa\solistens\solistenDetailCtrl.js" />
     <Content Include="Scripts\spa\solistens\solistens.html" />
     <Content Include="Scripts\vendors\angucomplete-alt.js" />
     <Content Include="Scripts\vendors\angular-base64.js" />

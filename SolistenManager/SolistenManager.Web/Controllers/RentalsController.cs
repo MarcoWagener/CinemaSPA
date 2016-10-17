@@ -1,4 +1,5 @@
-﻿using SolistenManager.Data.Infrastructure;
+﻿using SolistenManager.Data.Extensions;
+using SolistenManager.Data.Infrastructure;
 using SolistenManager.Data.Repositories;
 using SolistenManager.Entities;
 using SolistenManager.Web.Infrastructure.Core;
@@ -12,6 +13,7 @@ using System.Web.Http;
 
 namespace SolistenManager.Web.Controllers
 {
+    [RoutePrefix("api/rentals")]
     public class RentalsController : ApiControllerBase
     {
         private readonly IEntityBaseRepository<Rental> _rentalRepository;
@@ -33,9 +35,81 @@ namespace SolistenManager.Web.Controllers
             _solistenRepository = solistenRepository;
         }
 
+        [HttpGet]
+        [Route("{id:int}/rentalhistory")]
+        public HttpResponseMessage RentalHistory(HttpRequestMessage request, int id)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+
+                List<RentalHistoryModel> _rentalHistory = GetSolistenRentalHistory(id);
+
+                response = request.CreateResponse<List<RentalHistoryModel>>(HttpStatusCode.OK, _rentalHistory);
+
+                return response;
+            });
+        }
+
+        [HttpPost]
+        [Route("return/{rentalId:int}")]
+        public HttpResponseMessage Return(HttpRequestMessage request, int rentalId)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+
+                var rental = _rentalRepository.GetSingle(rentalId);
+
+                if (rental == null)
+                    response = request.CreateErrorResponse(HttpStatusCode.NotFound, "Invalid rental");
+                else
+                {
+                    rental.Status = "Returned";
+                    rental.Stock.IsAvailable = true;
+                    rental.ReturnedDate = DateTime.Now;
+
+                    _unitOfWork.Commit();
+
+
+                    response = request.CreateResponse(HttpStatusCode.OK);
+                }
+
+                return response;
+            });
+        }
+        
+
         private List<RentalHistoryModel> GetSolistenRentalHistory(int solistenId)
         {
-            throw new NotImplementedException();
+            List<RentalHistoryModel> _rentalHistory = new List<RentalHistoryModel>();
+            List<Rental> rentals = new List<Rental>();
+
+            var solisten = _solistenRepository.GetSingle(solistenId);
+
+            foreach(var stock in solisten.Stocks)
+            {
+                rentals.AddRange(stock.Rentals);
+            }
+
+            foreach(var rental in rentals)
+            {
+                RentalHistoryModel _historyItem = new RentalHistoryModel()
+                {
+                    ID = rental.ID,
+                    StockId = rental.StockId,
+                    RentalDate = rental.RentalDate,
+                    ReturnedDate = rental.ReturnedDate.HasValue ? rental.ReturnedDate : null,
+                    Status = rental.Status,
+                    Client = _clientRepository.GetClientFullName(rental.ClientId)
+                };
+
+                _rentalHistory.Add(_historyItem);
+            }
+
+            _rentalHistory.Sort((r1, r2) => r2.RentalDate.CompareTo(r1.RentalDate));
+
+            return _rentalHistory;
         }
     }
 }

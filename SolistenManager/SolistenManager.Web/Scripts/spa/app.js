@@ -36,8 +36,8 @@
                 controller: "solistenAddCtrl"
             })
             .when("/solisten/:id", {
-                templateUrl: "scripts/spa/solisten/details.html",
-                controller: "solistenDetailsCtrl"
+                templateUrl: "scripts/spa/solistens/details.html",
+                controller: "solistenDetailCtrl"
             })
             .when("/solisten/edit/:id", {
                 templateUrl: "scripts/spa/solisten/edit.html",

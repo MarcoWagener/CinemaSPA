@@ -1,0 +1,96 @@
+﻿<hr />
+<div class="jumbotron">
+    <div class="container text-center">
+        <img alt="{{solisten.SerialNumber}}" ng-src="../../../Content/images/solistens/{{solisten.Image}}" class="pull-left" height="120" />
+        <div class="solistenDescription">
+            <i><i class="fa fa-quote-left"></i>{{solisten.Description}}<i class="fa fa-quote-right"></i></i>
+            <br />
+            <div class="btn-group">
+                <button ng-if="solisten.IsAvailable" type="button" ng-click="openRentDialog();" class="btn btn-sm btn-primary">Rent Solisten<i class="fa fa-book pull-right"></i></button>
+                <a href="#/solistens/edit/{{solsiten.ID}}" class="btn btn-sm btn-default">Edit Solisten<i class="fa fa-pencil-square-o pull-right"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h5>{{solisten.SerialNumber}}</h5>
+            </div>
+            <div class="panel-body" ng-if="!loadingSolistens">
+                <div class="media">
+                    <a ng-href="#/solisten/{{solisten.ID}}" title="View {{solisten.SerialNumber}}" class="pull-right" details>
+                        <img ng-src="../../../Content/images/solistens/{{solisten.Image}}" alt="" class="media-object" height="120" />
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">{{solisten.SerialNumber}}</h4>
+                        Owner: <strong>{{solisten.Owner}}</strong>
+                        <br />
+                        Purchase Date: <strong>{{solisten.PurchaseDate}}</strong>
+                        <br />
+                        Description: <strong>{{solisten.Description | limitTo: 70}}</strong>
+                    </div>
+                    <available-solisten is-available="{{solisten.IsAvailable}}"></available-solisten>
+                </div>
+            </div>
+        </div>
+        <div ng-if="loadingSolistens">
+            <div class="col-xs-4"></div>
+            <div class="col-xs-4">
+                <i class="fa fa-refresh fa-4x fa-spin">
+                    <label class="label label-primary">Loading solisten data...</label>
+                </i>
+            </div>
+            <div class="col-xs-4"></div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-danger shortPanel">
+            <div class="panel-heading clearfix">
+                <h5 class="panel-heading">Rentals</h5>
+                <div class="input-group">
+                    <input id="inputSearchSolistens" type="search" ng-model="filterRentals" class="form-control" placeholder="Filter..." />
+                    <div class="input-group-btn">
+                        <button class="btn btn-primary" ng-click="clearSearch();">
+                            <i class="glyphicon glyphicon-remove-sign"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table-bordered table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Rental Date</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="rental in rentalHistory | filter:filterRentals">
+                            <td>{{rental.ID}}</td>
+                            <td>{{rental.Client}}</td>
+                            <td>{{rental.RentalDate | date:'fullDate'}}</td>
+                            <td ng-class="getStatusColor(rental.Status)">{{rental.Status}}</td>
+                            <td class="text-center">
+                                <button class="btn btn-primary btn-xs" ng-if="isBorrowed(rental)" type="button" ng-click="returnSolisten(rental.ID)">Return</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div ng-if="loadingSolistens">                
+                <div class="col-xs-4"></div>
+                <div class="col-xs-4">
+                    <i class="fa fa-refresh fa-4x fa-spin">
+                        <label class="label label-primary">Loading rental history...</label>
+                    </i>
+                </div>
+                <div class="col-xs-4"></div>
+            </div>
+        </div>
+    </div>
+</div>

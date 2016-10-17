@@ -55,6 +55,7 @@
     <Compile Include="Configurations\AccessoryConfiguration.cs" />
     <Compile Include="Configurations\ClientConfiguration.cs" />
     <Compile Include="Configurations\EntityBaseConfiguration.cs" />
+    <Compile Include="Extensions\ClientExtensions.cs" />
     <Compile Include="Extensions\UserExtensions.cs" />
     <Compile Include="Infrastructure\DbFactory.cs" />
     <Compile Include="Infrastructure\Disposable.cs" />
