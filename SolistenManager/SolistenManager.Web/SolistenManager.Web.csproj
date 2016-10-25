@@ -181,8 +181,10 @@
     <Content Include="Scripts\spa\services\apiService.js" />
     <Content Include="Scripts\spa\services\notificationService.js" />
     <Content Include="Scripts\spa\solistens\details.html" />
+    <Content Include="Scripts\spa\solistens\edit.html" />
     <Content Include="Scripts\spa\solistens\solistenCtrl.js" />
     <Content Include="Scripts\spa\solistens\solistenDetailCtrl.js" />
+    <Content Include="Scripts\spa\solistens\solistenEditCtrl.js" />
     <Content Include="Scripts\spa\solistens\solistens.html" />
     <Content Include="Scripts\vendors\angucomplete-alt.js" />
     <Content Include="Scripts\vendors\angular-base64.js" />
@@ -233,6 +235,7 @@
     <Compile Include="Models\AccessoryModel.cs" />
     <Compile Include="Models\ClientModel.cs" />
     <Compile Include="Models\RentalHistoryModel.cs" />
+    <Compile Include="Models\RentalModel.cs" />
     <Compile Include="Models\SolistenModel.cs" />
     <Compile Include="Models\StockModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

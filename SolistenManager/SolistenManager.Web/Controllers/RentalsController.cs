@@ -1,4 +1,5 @@
-﻿using SolistenManager.Data.Extensions;
+﻿using AutoMapper;
+using SolistenManager.Data.Extensions;
 using SolistenManager.Data.Infrastructure;
 using SolistenManager.Data.Repositories;
 using SolistenManager.Entities;
@@ -79,6 +80,50 @@ namespace SolistenManager.Web.Controllers
             });
         }
         
+        [HttpPost]
+        [Route("rent/{clientId:int}/{stockId:int}")]
+        public HttpResponseMessage Rent(HttpRequestMessage request, int clientId, int stockId)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+
+                var client = _clientRepository.GetSingle(clientId);
+                var stock = _stockRepository.GetSingle(stockId);
+
+                if(client == null || stock == null)
+                {
+                    response = request.CreateErrorResponse(HttpStatusCode.NotFound, "Invalid client or stock time");
+                }
+                else
+                {
+                    if (stock.IsAvailable)
+                    {
+                        Rental rental = new Rental()
+                        {
+                            ClientId = clientId,
+                            StockId = stockId,
+                            RentalDate = DateTime.Now,
+                            Status = "Borrowed"
+                        };
+
+                        _rentalRepository.Add(rental);
+
+                        stock.IsAvailable = false;
+
+                        _unitOfWork.Commit();
+
+                        RentalModel rentalModel = Mapper.Map<Rental, RentalModel>(rental);
+
+                        response = request.CreateResponse<RentalModel>(HttpStatusCode.OK, rentalModel);
+                    }
+                    else
+                        response = request.CreateErrorResponse(HttpStatusCode.BadRequest, "Selected stock is not available anymore");
+                }
+
+                return response;
+            });
+        }
 
         private List<RentalHistoryModel> GetSolistenRentalHistory(int solistenId)
         {

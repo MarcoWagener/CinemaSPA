@@ -15,15 +15,16 @@
                     <label class="control-label">Select client</label>
                     <angucomplete-alt id="members"
                                       placeholder="Search clients"
-                                      onpause="200"
+                                      pause="200"
                                       selected-object="selectClient"
-                                      remote-url="/api/clients?filter="
-                                      remote-url-data-field=""
+                                      input-changed="selectionChanged"
+                                      remote-url="/api/clients/search?filter="
+                                      remote-url-data-field="Items"
                                       title-field="FirstName,LastName"
                                       description-field="Email"
                                       input-class="form-control form-control-small"
                                       match-class="red"
-                                      text-searching="Searching clients..."
+                                      text-searching="Searching clients.."
                                       text-no-results="No clients found matching your filter." />
                 </div>
             </div>
