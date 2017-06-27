@@ -452,8 +452,7 @@
                 }
                 else {
                     if (console && console.error) {
-                        //console.error('http error');
-                        console.log(errorRes, status, headers, config);
+                        console.error('http error');
                     }
                 }
             }

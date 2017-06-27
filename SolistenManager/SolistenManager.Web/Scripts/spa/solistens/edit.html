@@ -1,1 +1,22 @@
-﻿
+﻿<div id="editSolistenWrapper">
+    <hr />
+    <div class="row" ng-if="!loadingSolistens">
+        <div class="col-xs-3">
+            <div class="text-center">
+                <img src="../../../Content/images/solistens/{{solisten.Image}}" alt="avatar" class="avatar img-responsive" />
+                <h6>Change photo...</h6>
+
+                <input type="file" ng-file-select="prepareFiles($files)" />
+            </div>
+        </div>
+
+        <div class="col-xs-9 personal-info">
+            <div class="alert alert-info alert-dismissable">
+                <a data-dissmiss="alert" class="panel-close close"></a>
+                <i class="fa fa-pencil-square-o"></i>
+                Edit <strong>{{solisten.SerialNumber}} solisten. Make sure you fill all required fields.</strong>
+            </div>
+            <form class="form-horizontal" role="form"></form>
+        </div>
+    </div>
+</div>
